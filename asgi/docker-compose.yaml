@@ -1,0 +1,29 @@
+version: '3.8'
+
+x-defaults: &defaults
+  env_file: .env
+  networks:
+  - default
+
+services:
+  flask:
+    entrypoint: ["app.py"]
+    command: ["ddtrace-run", "python3", "app.py"]
+    build:
+      context: .
+    hostname: api
+    environment:
+      PYTHONOPTIMIZE: "1"
+      DD_TRACE_AGENT_URL: http://datadog-agent:8126/
+    volumes:
+    - .:/usr/src/app/
+    ports:
+    - 8000:8000
+    << : *defaults
+  datadog-agent:
+    image: datadog/agent:7.50.3
+    environment:
+      DD_APM_NON_LOCAL_TRAFFIC: true
+      DD_TRACE_DEBUG: false
+      DD_TRACE_STARTUP_LOGS: false
+    <<: *defaults
