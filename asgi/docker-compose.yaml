@@ -1,29 +1,32 @@
 version: '3.8'
-
+  
 x-defaults: &defaults
   env_file: .env
   networks:
   - default
 
 services:
-  flask:
-    entrypoint: ["app.py"]
-    command: ["ddtrace-run", "python3", "app.py"]
-    build:
-      context: .
-    hostname: api
-    environment:
-      PYTHONOPTIMIZE: "1"
-      DD_TRACE_AGENT_URL: http://datadog-agent:8126/
-    volumes:
-    - .:/usr/src/app/
+  quart:
+    build: .
     ports:
-    - 8000:8000
-    << : *defaults
+      - "8000:8000"
+    environment:
+      DD_SERVICE: monkey
+      DD_AGENT_HOST: "datadog-agent"
+      DD_ENV: asgi
   datadog-agent:
-    image: datadog/agent:7.50.3
+    image: datadog/agent:7.54.0
     environment:
       DD_APM_NON_LOCAL_TRAFFIC: true
-      DD_TRACE_DEBUG: false
-      DD_TRACE_STARTUP_LOGS: false
-    <<: *defaults
+      DD_TRACE_DEBUG: true
+      DD_API_KEY: redacted
+      DD_TRACE_STARTUP_LOGS: true
+      DD_APM_ENABLED: true
+    ports:
+      - "8126:8126"
+      - "8125:8125/udp"
+    volumes:
+     - /etc/passwd:/etc/passwd:ro
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /proc/:/host/proc/:ro
+     - /sys/fs/cgroup:/host/sys/fs/cgroup:ro

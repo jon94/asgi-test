@@ -15,7 +15,6 @@ EXPOSE 8000
 
 # Define environment variables
 ENV DD_SERVICE=monkey
-ENV QUART_APP=test:app1
 
 # Run the specified command when the container launches
-CMD ["ddtrace-run", "hypercorn", "-b", "127.0.0.1:8000", "test:app"]
+CMD ["ddtrace-run", "hypercorn", "-b", "0.0.0.0:8000", "app:app"]
