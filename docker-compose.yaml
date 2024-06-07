@@ -8,6 +8,7 @@ services:
       DD_AGENT_HOST: "datadog-agent"
       DD_ENV: asgi
       DD_RUNTIME_METRICS_ENABLED: true
+      DD_PROFILING_ENABLED: true
   datadog-agent:
     image: datadog/agent:7.54.0
     environment:
