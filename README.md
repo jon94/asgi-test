@@ -10,6 +10,8 @@ This repo tests how we can use dd-trace-py (Datadog Python Tracer) for a vanilla
 ### Clone the repo
 ```
 git clone https://github.com/jon94/asgi-test.git
+
+cd asgi-test
 ```
 ### Add Datadog API Key
 - Add your Datadog API Key into the docker-compose.yaml file
