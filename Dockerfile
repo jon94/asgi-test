@@ -1,6 +1,5 @@
-# Use an official Python runtime as a parent image
 FROM python:3.9
-
+  
 # Set the working directory in the container
 WORKDIR /app
 
@@ -15,6 +14,7 @@ EXPOSE 8000
 
 # Define environment variables
 ENV DD_SERVICE=monkey
+ENV QUART_APP=app:app
 
 # Run the specified command when the container launches
 CMD ["ddtrace-run", "hypercorn", "-b", "0.0.0.0:8000", "app:app"]

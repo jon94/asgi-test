@@ -1,10 +1,3 @@
-version: '3.8'
-  
-x-defaults: &defaults
-  env_file: .env
-  networks:
-  - default
-
 services:
   quart:
     build: .
@@ -19,7 +12,7 @@ services:
     environment:
       DD_APM_NON_LOCAL_TRAFFIC: true
       DD_TRACE_DEBUG: true
-      DD_API_KEY: redacted
+      DD_API_KEY: 7605dd766d9aa80d04c198b341e99f5e
       DD_TRACE_STARTUP_LOGS: true
       DD_APM_ENABLED: true
     ports:
