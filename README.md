@@ -3,6 +3,10 @@
 ## Background
 This repo tests how we can use dd-trace-py (Datadog Python Tracer) for a vanilla set up with the Quart Framework (Python). 
 
+## Useful Links
+- https://ddtrace.readthedocs.io/en/stable/integrations.html?highlight=asgi
+- https://github.com/pallets/quart
+
 ### Clone the repo
 ```
 git clone https://github.com/jon94/asgi-test.git
