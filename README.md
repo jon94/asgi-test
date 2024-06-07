@@ -1,6 +1,8 @@
 # asgi-test
 
-## To run this
+## Background
+This repo tests how we can use dd-trace-py (Datadog Python Tracer) for a vanilla set up with the Quart Framework (Python). 
+
 ### Clone the repo
 ```
 git clone https://github.com/jon94/asgi-test.git
