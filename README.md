@@ -41,4 +41,9 @@ hello
 ```
 
 ### View it in Datadog
-![asgi datadog](https://github.com/jon94/asgi-test/assets/40360784/b9915894-6688-43f0-8624-47f843dc9ec4)
+#### APM Traces
+![asgi datadog](https://github.com/jon94/asgi-test/assets/40360784/1f63d9df-6468-40e0-9831-1327bb99103a)
+
+#### Continuous Profiling
+![asgi_profile](https://github.com/jon94/asgi-test/assets/40360784/b53c25ab-d31a-4b6d-a74c-549d75a33cb2)
+
